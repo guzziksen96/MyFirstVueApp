@@ -18,7 +18,7 @@ export default {
     AddDogForm
   },
   created() {
-    this.$store.dispatch('fetchDogs');
+    this.$store.dispatch("fetchDogs");
   },
   computed: {
     dogs() {
@@ -29,14 +29,8 @@ export default {
     onSubmit(dog) {
       this.$store.dispatch("addDog", dog);
     },
-    removeLast() {
-      this.dogs.pop();
-    },
     removeDog(id) {
-
-
       this.$store.dispatch("removeDog", id);
-
     }
   }
 };

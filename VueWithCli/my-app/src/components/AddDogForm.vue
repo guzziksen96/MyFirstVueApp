@@ -28,10 +28,13 @@ export default {
         if (!result) {
           return;
         }
-        console.log(this.newDog);
+
         this.$emit("add-dog", this.newDog);
         this.$validator.reset();
       });
+    },
+    removeLast() {
+      this.$store.dispatch("removeLast");
     }
   }
 };
