@@ -19,8 +19,7 @@ export default {
   },
   methods: {
     removeDog(id) {
-      console.log("item" + id);
-      this.$emit("remove-dog", id);
+      var emit = this.$emit("remove-dog", id);
     }
   }
 };

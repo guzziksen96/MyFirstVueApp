@@ -22,7 +22,6 @@ export default {
   },
   methods: {
     removeDog(id) {
-      console.log("list" + id);
       this.$emit("remove-dog", id);
     }
   }

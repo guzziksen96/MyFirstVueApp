@@ -9,6 +9,7 @@
 <script>
 import DogList from "./components/DogList.vue";
 import AddDogForm from "./components/AddDogForm.vue";
+import axios from "axios";
 
 export default {
   name: "app",
@@ -16,35 +17,26 @@ export default {
     DogList,
     AddDogForm
   },
-  data() {
-    return {
-      dogs: [
-        {
-          id: 0,
-          name: "Labrador"
-        },
-        {
-          id: 1,
-          name: "Husky"
-        }
-      ]
-    };
+  created() {
+    this.$store.dispatch('fetchDogs');
+  },
+  computed: {
+    dogs() {
+      return this.$store.state.dogs;
+    }
   },
   methods: {
     onSubmit(dog) {
-      this.dogs.push(dog);
+      this.$store.dispatch("addDog", dog);
     },
     removeLast() {
       this.dogs.pop();
     },
     removeDog(id) {
-      console.log("app" + id);
-      let dogToRemove = this.dogs.filter(function(dog) {
-        return dog.id == id;
-      })[0];
-      let dogToRemoveIndex = this.dogs.indexOf(dogToRemove);
 
-      this.dogs.splice(dogToRemoveIndex, 1);
+
+      this.$store.dispatch("removeDog", id);
+
     }
   }
 };
